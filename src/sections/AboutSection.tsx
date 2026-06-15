@@ -2,7 +2,7 @@ import React from 'react';
 import { Code2, Server, Database, Cloud, MapPin, Briefcase, GraduationCap } from 'lucide-react';
 import { Section, SectionHeader } from '../components/Section';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import udayakumar from '../../src/assets/UdayaAboutimg.jpg';
+import udayakumar from "../assets/UdayaAboutimg.jpg";
 
 const STATS = [
   { value: '1',   label: 'Year of experience' },

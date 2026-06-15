@@ -3,7 +3,7 @@ import { Send, Github, Linkedin, Mail, MapPin, Phone, CheckCircle, MessageCircle
 import { Section, SectionHeader } from '../components/Section';
 import { Button } from '../components/Button';
 import type { ContactFormData } from '../types';
-import udaya from '../assets/Udayakumar.jpg';
+import udaya from "../assets/Udayakumar.jpg";
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const INITIAL: ContactFormData = { name: '', email: '', subject: '', message: '' };
