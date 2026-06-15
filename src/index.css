@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Light mode base */
+  body {
+    @apply bg-white text-slate-900;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Dark mode base */
+  html.dark body {
+    @apply bg-slate-950 text-slate-100;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-cyan-400 ring-offset-2;
+  }
+
+  html.dark :focus-visible {
+    @apply ring-offset-slate-950;
+  }
+
+  ::selection {
+    @apply bg-cyan-500/30 text-cyan-900;
+  }
+
+  html.dark ::selection {
+    @apply text-cyan-100;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-slate-100; }
+  html.dark ::-webkit-scrollbar-track { @apply bg-slate-950; }
+  ::-webkit-scrollbar-thumb { @apply bg-slate-300 rounded-full; }
+  html.dark ::-webkit-scrollbar-thumb { @apply bg-slate-700; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .section-divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent;
+  }
+  html.dark .section-divider {
+    @apply via-white/5;
+  }
+
+  /* Scroll-triggered animation utilities */
+  .animate-on-scroll {
+    will-change: opacity, transform;
+  }
+
+  /* Stagger children utility */
+  .stagger-children > * {
+    transition-delay: calc(var(--stagger-index, 0) * 80ms);
+  }
+}
+
+@layer utilities {
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(6,182,212,0); }
+    50% { box-shadow: 0 0 20px 4px rgba(6,182,212,0.15); }
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2.5s ease-in-out infinite;
+  }
+
+  .animate-blink {
+    animation: blink 1.2s step-end infinite;
+  }
+}
