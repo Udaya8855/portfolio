@@ -4,7 +4,7 @@ import { Section, SectionHeader } from '../components/Section';
 import { Button } from '../components/Button';
 import { Tag } from '../components/Tag';
 import { TIMELINE } from '../data';
-import udayaCv from '../assets/UDAYAKUMARVA.pdf';
+import udayaCv from "../assets/UDAYAKUMARVA.pdf";
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const ENTRY_ICONS = [
