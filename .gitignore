@@ -1,2 +1,7 @@
 node_modules/
 dist/
+
+# Local environment variables (EmailJS keys, etc.) — never commit these
+.env
+.env.local
+.env.*.local

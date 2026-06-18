@@ -55,6 +55,11 @@ export function useScrollAnimation(
       transitionDelay,
     };
 
+    // Use a CSS clamp() so slide distances scale down on narrow viewports
+    // instead of pushing content past the screen edge (which can cause a
+    // horizontal scrollbar on mobile while the element is mid-transition).
+    const slideDistance = 'clamp(16px, 8vw, 60px)';
+
     if (!isVisible) {
       switch (animation) {
         case 'fade-up':
@@ -64,9 +69,9 @@ export function useScrollAnimation(
         case 'fade-in':
           return { ...base, opacity: 0 };
         case 'slide-left':
-          return { ...base, opacity: 0, transform: 'translateX(-60px)' };
+          return { ...base, opacity: 0, transform: `translateX(calc(-1 * ${slideDistance}))` };
         case 'slide-right':
-          return { ...base, opacity: 0, transform: 'translateX(60px)' };
+          return { ...base, opacity: 0, transform: `translateX(${slideDistance})` };
         case 'pop-up':
           return { ...base, opacity: 0, transform: 'scale(0.85) translateY(20px)' };
         case 'pop-in':

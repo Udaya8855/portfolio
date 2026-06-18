@@ -90,7 +90,7 @@ export const AboutSection: React.FC = () => {
                 <img
                   src={udayakumar}
                   alt="Udaya Kumar V A"
-                  className="relative w-48 h-62 rounded-2xl object-cover border-2 border-cyan-300 dark:border-cyan-500/30"
+                  className="relative w-44 sm:w-48 h-56 sm:h-60 rounded-2xl object-cover border-2 border-cyan-300 dark:border-cyan-500/30"
                 />
               </div>
             </div>

@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Github, Linkedin, Mail, ArrowDown, Sparkles } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { Section } from '../components/Section';
 import { Button } from '../components/Button';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
@@ -23,7 +23,6 @@ export const HomeSection: React.FC = () => {
   const [roleIdx, setRoleIdx] = useState(0);
   const [visible, setVisible] = useState(true);
 
-  const greeting = useScrollAnimation('fade-down', { delay: 0 });
   const nameAnim = useScrollAnimation('fade-up', { delay: 100 });
   const roleAnim = useScrollAnimation('fade-up', { delay: 200 });
   const descAnim = useScrollAnimation('fade-up', { delay: 300 });
@@ -55,7 +54,7 @@ export const HomeSection: React.FC = () => {
     <Section
       id="home"
       ariaLabel="Introduction"
-      className="relative pt-20 min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-slate-950"
+      className="relative pt-28 sm:pt-20 pb-16 min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-slate-950"
     >
       {/* Background grid */}
       <div
@@ -131,7 +130,7 @@ export const HomeSection: React.FC = () => {
 
         {/* Social icons */}
         <div ref={socialAnim.ref as React.RefObject<HTMLDivElement>} style={socialAnim.style}
-          className="flex items-center justify-center gap-4 mb-16"
+          className="flex items-center justify-center gap-4 mb-12"
         >
           <a
             href="https://github.com/Udaya8855"
@@ -156,6 +155,23 @@ export const HomeSection: React.FC = () => {
           >
             <Mail size={18} />
           </button>
+        </div>
+
+        {/* Quick stats */}
+        <div
+          ref={statsAnim.ref as React.RefObject<HTMLDivElement>}
+          style={statsAnim.style}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-xl mx-auto mb-4"
+        >
+          {QUICK_STATS.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-xl border border-slate-200 dark:border-white/8 bg-slate-50/80 dark:bg-white/[0.03] px-3 py-4 text-center"
+            >
+              <p className="font-display text-2xl sm:text-3xl font-bold text-cyan-500">{stat.value}</p>
+              <p className="font-mono text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1">{stat.label}</p>
+            </div>
+          ))}
         </div>
 
       </div>

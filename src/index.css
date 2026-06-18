@@ -14,12 +14,27 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Prevent any stray off-canvas element (e.g. slide-in animations) from
+       creating horizontal scroll on mobile viewports. */
+    overflow-x: hidden;
+    width: 100%;
   }
 
   /* Light mode base */
   body {
     @apply bg-white text-slate-900;
     font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  #root {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  img, svg, video, canvas {
+    max-width: 100%;
   }
 
   /* Dark mode base */
@@ -69,6 +84,14 @@
   /* Scroll-triggered animation utilities */
   .animate-on-scroll {
     will-change: opacity, transform;
+  }
+
+  /* Slide-in animations (slide-left / slide-right) translate elements past
+     the viewport edge before they settle. Sections that contain them need
+     their own clipping context so the translated state never produces a
+     horizontal scrollbar, especially on narrow mobile viewports. */
+  section {
+    overflow-x: clip;
   }
 
   /* Stagger children utility */
